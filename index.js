@@ -1,16 +1,24 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+// src/index.js
+import express from 'express';
+import dotenv from 'dotenv';
+import connectDB from './src/config/db.js';
 
-// Middleware xử lý JSON
+dotenv.config();
+
+const app = express();
+
+// Middleware
 app.use(express.json());
 
-// Route đơn giản
+// Connect to MongoDB
+connectDB();
+
+// Sample route
 app.get('/', (req, res) => {
-  res.send('Hello from Express!');
+  res.send('API is running...');
 });
 
-// Lắng nghe cổng
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });
