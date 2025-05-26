@@ -1,4 +1,4 @@
-import User from '../models/user.model.js';
+import User from '../models/useModel.js';
 import generateToken from "../utils/generateToken.js"
 class AuthService {
     async register({ name, email, password, role }) {
